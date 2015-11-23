@@ -9,6 +9,7 @@ function setup(){
   var canvas = createCanvas(300,100);
   canvas.parent('sketch');
 
+  var events = arch.events;
   var name = [];
   var nature = [];
 
