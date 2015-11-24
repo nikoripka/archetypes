@@ -1,27 +1,52 @@
 var arch;
+var w = window;
+var wX = w.innerWidth;
+var wY = w.innerHeight;
 
-function preload(){
+function preload() {
   var url = 'event.json';
   arch = loadJSON(url);
 }
 
-function setup(){
-  var canvas = createCanvas(300,100);
-  canvas.parent('sketch');
+function setup() {
+  createCanvas(wX,wY);
+  background(0);
 
   var events = arch.events;
-  var name = [];
-  var nature = [];
+  var nameIsNeutral = [];
+  var nameIsGood = [];
+  var nameIsEvil = [];
 
-  // this is a special loop for objects: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/for...in
-  for(var key in events){
-    name.push(events[key].name);
-    nature.push(events[key].nature);
+  for (var i = 0; i < events.length; i++) {
+    if (events[i].nature == "neutral") {
+      nameIsNeutral.push(events[i].name);
+    }
+    else if (events[i].nature == "good") {
+      nameIsGood.push(events[i].name);
+    }
+    else {
+      nameIsEvil.push(events[i].name);
+    }
   }
 
-  console.log(name);
-  console.log(nature);
+  nameIsNeutral.sort();
+  var neutral = nameIsNeutral.join("  ");
+  nameIsGood.sort();
+  var good = nameIsGood.join("  ");
+  nameIsEvil.sort();
+  var evil = nameIsEvil.join("  ");
+
+  textSize(32);
+  noStroke();
+  fill(255);
+  text("Archetypal events",30,60);
+  fill(0,141,202);
+  text(neutral,30,140);
+  fill(34,177,76);
+  text(good,30,200);
+  fill(221,0,0);
+  text(evil,30,260);
 }
 
-function draw(){
+function draw() {
 }
