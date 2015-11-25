@@ -46,6 +46,14 @@ function setup() {
   text(good,30,200);
   fill(221,0,0);
   text(evil,30,260);
+
+  textSize(16);
+  fill(0,141,202);
+  text("neutral",30,340);
+  fill(34,177,76);
+  text("good",30,370);
+  fill(221,0,0);
+  text("evil",30,400);
 }
 
 function draw() {
